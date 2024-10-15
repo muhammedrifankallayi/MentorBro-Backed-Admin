@@ -18,16 +18,16 @@ app.use(bodyParser.json());
 
 app.use(express.json())
 
-app.use('/api/Auth',userRoute)
+app.use('/api/user',userRoute)
 app.use('/api/Admin',adminRoute)
 
 
-// mongoose.connect("mongodb+srv://rifanrifan55544:aDB91gIo6i30s2rw@cluster0.cwkwruy.mongodb.net/DB_Mentor_Br").then(() => {
-//     console.log("Connected to MongoDB");
+mongoose.connect("mongodb://127.0.0.1:27017/DB_Mentor_Br").then(() => {
+    console.log("Connected to MongoDB");
   
-//   }).catch(err => {
-//     console.error("Error connecting to MongoDB:", err);
-//   });
+  }).catch(err => {
+    console.error("Error connecting to MongoDB:", err);
+  });
 
 app.listen(3000,()=>{
     console.log("server loading");
