@@ -26,6 +26,16 @@ qualification:{
     isBlocked:{
         type:Number,
         default:0
+    },
+    isStudent:{
+        type:Number,
+        default:0
+    },
+    courseCode:{
+        type:Number
+    },
+    batchNo:{
+        type:Number
     }
 },{
     timestamps:true
