@@ -20,6 +20,19 @@ const userRegister = async(req,res)=>{
 }
 
 
+
+const blockUser = async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+
+
+
 module.exports = {
-    userRegister
+    userRegister,
+    blockUser
 }

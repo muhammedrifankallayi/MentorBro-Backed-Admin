@@ -9,7 +9,53 @@ res.status(200).send(userList)
 
 }
 
+//Course
+
+const getCourseList = async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+
+
+//Faculty
+
+const facultyList = async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+
+const reviewList = async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+
+const statisticsList = async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+
 
 module.exports = {
-    getUserList
+    getUserList,
+    getCourseList,
+    facultyList,
+    getCourseList,
+    reviewList,
+    statisticsList
 }

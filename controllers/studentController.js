@@ -17,6 +17,21 @@ const updateStudent = async(req,res)=>{
 }
 
 
+const updateStudentDetails = async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+
+
+
+
+
+
 module.exports = {
-    updateStudent
+    updateStudent,
+    updateStudentDetails
 }

@@ -16,7 +16,19 @@ type:String
 },
 fees:{
     type:Number
+},
+description:{
+type:String
+},
+isPublished:{
+   type:Boolean,
+   default:false
+},
+delete:{
+    type:Boolean,
+    default:false
 }
+
 },{
     timestamps:true
 })
