@@ -1,10 +1,6 @@
 const taskModel = require("../models/taskModel");
 const performenceModel = require("../models/performanceModel")
 
-
-
-
-
 const nextWeekTaskAssign = async(req,res)=>{
     try {
         
@@ -13,6 +9,7 @@ const nextWeekTaskAssign = async(req,res)=>{
      const Model = new taskModel(data)
      await Model.save()
 
+     res.status(200).send({success:true})
 
 
     } catch (error) {
@@ -27,6 +24,8 @@ const weeklyPerformanceAdd = async(req,res)=>{
         const data = req.body
         const Model = new  performenceModel(data);
        await Model.save()
+     res.status(200).send({success:true})
+
         
     } catch (error) {
         console.log(error.message);
