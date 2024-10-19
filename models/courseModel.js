@@ -28,7 +28,6 @@ delete:{
     type:Boolean,
     default:false
 }
-
 },{
     timestamps:true
 })

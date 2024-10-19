@@ -1,5 +1,40 @@
 const mongoose = require("mongoose");
 
+const performanceSchema = new mongoose.Schema({
+    week: {
+        type: Number, // e.g., 1 for Week 1, 2 for Week 2
+        required: true
+    },
+    score: {
+        type: Number, // e.g., percentage or grade
+        required: true
+    },
+    feedback: {
+        type: String, // feedback on the performance
+    }
+});
+
+const taskSchema = new mongoose.Schema({
+    week: {
+        type: Number, // e.g., 1 for Week 1, 2 for Week 2
+        required: true
+    },
+    taskName: {
+        type: String, // name of the task
+        required: true
+    },
+    description: {
+        type: String, // task details
+    },
+    isCompleted: {
+        type: Boolean,
+        default: false
+    }
+});
+
+
+
+
 const userSchema = new mongoose.Schema({
     username:{
         type: String,

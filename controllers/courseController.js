@@ -17,6 +17,7 @@ const saveCourse = async(req,res)=>{
 
 
     } catch (error) {
+        
         res.status(400).send({success:false});
 
         console.log(error.message);

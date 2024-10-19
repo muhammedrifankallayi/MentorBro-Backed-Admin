@@ -11,4 +11,8 @@ mainRoute.get("/getReviewList",configController.reviewList)
 mainRoute.get("/getOvarallStatistics",configController.statisticsList)
 
 
+
+
+
+
 module.exports = mainRoute
