@@ -89,7 +89,11 @@ const userSchema = new mongoose.Schema({
         leaveDate: {
             type: Date
         }
-    }]
+    }],
+    currentWeek:{
+        type:Number,
+        default:0
+    }
 },{
     timestamps: true
 });
