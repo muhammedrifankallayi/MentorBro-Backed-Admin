@@ -23,7 +23,8 @@ const weeklyPerformanceAdd = async(req,res)=>{
 
         const data = req.body
         const Model = new  performenceModel(data);
-       await Model.save()
+       await Model.save();
+        
      res.status(200).send({success:true})
 
         
@@ -34,7 +35,43 @@ const weeklyPerformanceAdd = async(req,res)=>{
 }
 
 
+const getWeeklyTaskByUserId = async(req,res)=>{
+
+try{
+const id = req.query.id
+    const data = await taskModel.find({studentId:id})
+    res.status(200).send({{success:true})
+
+    
+}catch(error){
+    
+console.log(error.message)
+res.status(400).send({success:false,error:error.message});
+}
+
+
+}
+
+
+const getWeekTaskPerformanceByUserId = async(req,res)=>{
+
+try{
+    const id = req.query.id
+    const data = await performenceModel.find({studentId:id})
+    res.status(200).send({{success:true})
+
+    
+}catch(error){
+console.log(error.message)
+res.status(400).send({success:false,error:error.message});
+}
+
+}
+
+
 module.exports = {
     nextWeekTaskAssign,
-    weeklyPerformanceAdd
+    weeklyPerformanceAdd,
+    getWeeklyTaskByUserId,
+    getWeekTaskPerformanceByUserId
 }
