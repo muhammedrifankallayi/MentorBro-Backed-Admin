@@ -77,19 +77,11 @@ const userSchema = new mongoose.Schema({
             type: Date
         }
     }],
-    batch: [{
-        batchNo: {
-            type: String,
-            required: true
-        },
-        joinDate: {
-            type: Date,
-            required: true
-        },
-        leaveDate: {
-            type: Date
+    batch: {
+        type:{
+            type:String
         }
-    }],
+    },
     currentWeek:{
         type:Number,
         default:0

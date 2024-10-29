@@ -1,7 +1,11 @@
 const jwt = require('jsonwebtoken')
 module.exports = async (req, res, next) => {
     try {
+       
+        
+        console.log(req.headers);
         const token = req.headers['authorization'].split(' ')[1]
+        
         jwt.verify(token, '123', (err, decoded) => {
             if (err) {
                 return res.status(401)
