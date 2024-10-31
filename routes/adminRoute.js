@@ -5,6 +5,10 @@ const configController = require("../controllers/configController")
 const studentController = require("../controllers/studentController")
 const courseController = require("../controllers/courseController")
 const userController = require("../controllers/userAuthController")
+
+const batchController = require("../controllers/batchController")
+
+
 const middleWare = require("../middlewares/AuthAdminMiddleware")
 
 // Admin Auth
@@ -29,6 +33,18 @@ adminRoute.post("/deleteCourse",courseController.deleteCourse)
 
 
 //task management system
+
+
+
+
+//Batch Management
+
+adminRoute.post("/addBatch",batchController.saveBatch)
+adminRoute.get("/getAllBatch",batchController.getAllBatch)
+adminRoute.post("/updateBatch",batchController.updateBatch)
+adminRoute.get("/getNextBatchNo",batchController.getNextBatchNo)
+
+
 
 
 

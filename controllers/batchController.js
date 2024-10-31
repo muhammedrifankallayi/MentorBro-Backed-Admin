@@ -7,10 +7,13 @@ const saveBatch = async(req,res)=>{
     try {
         
     const data = req.body
+console.log(data);
 
     const Model = new batchModel(data);
     await Model.save()
-    .then(()=>{
+    .then((data)=>{
+        console.log(data);
+        
         res.status(200).send({success:true})
     })
 
@@ -39,7 +42,7 @@ const getNextBatchNo = async(req,res)=>{
     try {
 
         const data = await batchModel.find()
-        const batchNo = data.length
+        const batchNo = data.length+1
   res.status(200).send({success:true,data:batchNo})
         
     } catch (error) {

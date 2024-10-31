@@ -9,7 +9,6 @@ course:{
 },
 shortCode:{
     type:String,
-    required:true
 },
 duration:{
 type:String
@@ -27,6 +26,9 @@ isPublished:{
 delete:{
     type:Boolean,
     default:false
+},
+payType:{
+    type:Number
 }
 },{
     timestamps:true

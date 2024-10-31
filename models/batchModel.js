@@ -3,23 +3,27 @@ const mongoose = require("mongoose");
 
 const batchModel = new mongoose.Schema({
     batchNo:{
-        trype:Number,
+        type:Number,
         required:true
     },
     noOfStudents:{
         type:Number,
+        default:0
     },
     startDate:{
         type:Date
     },
     duration:{
-        type:Number
+        type:Number,
+        default:0
     },
     currentStatus:{
-        type:String
+        type:String,
+        default:"Pending"
     },
     isClosed:{
-        type:Boolean
+        type:Boolean,
+        default:false
     }
 },{
     timestamps:true
