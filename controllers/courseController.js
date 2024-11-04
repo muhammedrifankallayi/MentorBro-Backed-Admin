@@ -11,7 +11,7 @@ const saveCourse = async(req,res)=>{
 
         const Model = new courseModel(data);
         await Model.save()
-        .then((res)=>{
+        .then((response)=>{
             res.status(200).send({success:true});
         })
 

@@ -10,7 +10,13 @@ const EnquirySchema = new mongoose.Schema({
     mobile:{
         type:String,
         require:true
+    },
+    completed:{
+        type:Number,
+        default:0
     }
+},{
+    timestamps:true
 })
 
 

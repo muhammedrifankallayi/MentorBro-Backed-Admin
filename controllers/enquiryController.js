@@ -5,8 +5,10 @@ const EnqModel = require("../models/enquiryModel")
 
 const SaveEnquiry = async(req,res)=>{
     try {
+ 
         
 const data = req.body
+
 
 const duplicate = await EnqModel.findOne({mobile:data.mobile})
 
@@ -36,7 +38,27 @@ res.status(200).send({success:true,data:data})
 
 }
 
+
+
+const closeEnquiry = async(req,res)=>{
+    try {
+        
+    const data = req.body
+    await EnqModel.updateOne({_id:data._id},{
+        $set:{completed:1}
+    }).then(()=>{
+        res.status(200).send({success:true})
+    })
+
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
+
+
 module.exports = {
     SaveEnquiry,
-    getAllEnquiries
+    getAllEnquiries,
+    closeEnquiry
 }
