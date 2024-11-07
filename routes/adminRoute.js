@@ -4,7 +4,6 @@ const adminAuthController = require("../controllers/AdmiAuthController")
 const configController = require("../controllers/configController")
 const studentController = require("../controllers/studentController")
 const courseController = require("../controllers/courseController")
-const userController = require("../controllers/userAuthController")
 const enqryController = require("../controllers/enquiryController")
 
 const batchController = require("../controllers/batchController")
@@ -22,13 +21,12 @@ adminRoute.post("/closeEnquiry",enqryController.closeEnquiry)
 // Admin Auth
 adminRoute.post("/login",adminAuthController.UserLogin);
 
-//Config Controll
-adminRoute.get("/getUserList",middleWare,configController.getUserList);
-adminRoute.get("/blockUser",userController.blockUser);
+
+
 
 
 //StudentControll
-
+adminRoute.post("/saveStudent",studentController.saveStudent)
 adminRoute.post("/updateStudent",studentController.updateStudent)
 adminRoute.post("/updateStudentDetails",studentController.updateStudentDetails)
 adminRoute.get("/getAllStudents",studentController.getStudents)

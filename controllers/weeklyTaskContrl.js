@@ -40,7 +40,7 @@ const getWeeklyTaskByUserId = async(req,res)=>{
 try{
 const id = req.query.id
     const data = await taskModel.find({studentId:id})
-    res.status(200).send({{success:true})
+    res.status(200).send({success:true})
 
     
 }catch(error){
@@ -58,7 +58,7 @@ const getWeekTaskPerformanceByUserId = async(req,res)=>{
 try{
     const id = req.query.id
     const data = await performenceModel.find({studentId:id})
-    res.status(200).send({{success:true})
+    res.status(200).send({success:true})
 
     
 }catch(error){

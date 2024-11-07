@@ -1,13 +1,6 @@
-const userModel = require("../models/userModel");
 
 
-const getUserList = async(req,res)=>{
 
-const userList = await userModel.find();
-
-res.status(200).send(userList)
-
-}
 
 //Course
 
@@ -52,7 +45,6 @@ const statisticsList = async(req,res)=>{
 
 
 module.exports = {
-    getUserList,
     getCourseList,
     facultyList,
     getCourseList,
