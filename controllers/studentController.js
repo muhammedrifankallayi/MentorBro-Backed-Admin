@@ -39,6 +39,8 @@ const updateStudent = async(req,res)=>{
 const getStudents = async(req,res)=>{
     try {
 
+      const data =   await studentModel.find();
+        res.status(200).send({success:true,data})
        
         
     } catch (error) {

@@ -6,6 +6,8 @@ const studentController = require("../controllers/studentController")
 const courseController = require("../controllers/courseController")
 const enqryController = require("../controllers/enquiryController")
 
+const facultyController = require("../controllers/facultyController")
+
 const batchController = require("../controllers/batchController")
 
 
@@ -52,6 +54,12 @@ adminRoute.post("/updateBatch",batchController.updateBatch)
 adminRoute.get("/getNextBatchNo",batchController.getNextBatchNo)
 
 
+
+// Faculty
+
+adminRoute.post("/saveFaculty",facultyController.saveFaculty);
+adminRoute.post("/updateFaculty",facultyController.updateFaculty);
+adminRoute.post("/deleteFaculty",facultyController.deleteFaculty);
 
 
 
