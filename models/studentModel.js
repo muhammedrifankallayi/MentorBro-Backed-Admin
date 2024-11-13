@@ -31,7 +31,14 @@ const userModel = new mongoose.Schema({
     },
     education:{
         type:String
-    }
+    },
+    current_week:{
+        type:Number,
+        default:0
+    },
+   weekId:{
+    type:String
+   }
 })
 
 

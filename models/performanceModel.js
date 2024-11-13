@@ -6,13 +6,17 @@ const performanceSchema = new mongoose.Schema({
         ref: 'userModel',
         required: true
     },
+    taskId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Task',
+        required: true ,
+    },
     week: {
         type: Number,
         required: true
     },
     score: {
         type: Number,
-        required: true
     },
     feedback: {
         type: String

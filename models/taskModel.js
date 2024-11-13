@@ -14,12 +14,21 @@ const taskSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    description: {
+    remarks: {
         type: String
     },
     isCompleted: {
         type: Boolean,
         default: false
+    },
+    date_from:{
+        type:Date
+    },
+    date_to:{
+        type:Date
+    },
+    file_name:{
+       type:String
     }
 }, {
     timestamps: true

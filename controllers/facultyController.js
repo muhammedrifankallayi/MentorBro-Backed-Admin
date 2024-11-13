@@ -53,10 +53,25 @@ await facultyModel.findOneAndUpdate({_id:id},{
     }
 }
 
+const   getAllFaculties = async(req,res)=>{
+    try {
+
+      const data  = await facultyModel.find();
+
+      res.status(200)
+      .send({success:true,data});
+
+        
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 module.exports = {
     saveFaculty,
     updateFaculty,
-    deleteFaculty
+    deleteFaculty,
+    getAllFaculties
 }
 
 

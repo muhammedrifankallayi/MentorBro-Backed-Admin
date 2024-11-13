@@ -5,13 +5,15 @@ const configController = require("../controllers/configController")
 const studentController = require("../controllers/studentController")
 const courseController = require("../controllers/courseController")
 const enqryController = require("../controllers/enquiryController")
-
+const weeklyTaskController = require("../controllers/weeklyTaskContrl")
 const facultyController = require("../controllers/facultyController")
-
 const batchController = require("../controllers/batchController")
 
 
 const middleWare = require("../middlewares/AuthAdminMiddleware")
+const multer = require("../middlewares/multer")
+
+
 
 // Enquiry
 
@@ -60,7 +62,14 @@ adminRoute.get("/getNextBatchNo",batchController.getNextBatchNo)
 adminRoute.post("/saveFaculty",facultyController.saveFaculty);
 adminRoute.post("/updateFaculty",facultyController.updateFaculty);
 adminRoute.post("/deleteFaculty",facultyController.deleteFaculty);
+adminRoute.get("/getAllFaculties",facultyController.getAllFaculties)
 
+
+// weekly Task Management
+
+adminRoute.get("/getTaskPerformanceListByUser",weeklyTaskController.getWeekTaskPerformanceByUserId)
+adminRoute.get("/getNextWeekByStudent",weeklyTaskController.studentNextWeekFind)
+adminRoute.post("/saveTask",multer.single("file"),weeklyTaskController.saveTask)
 
 
 module.exports = adminRoute

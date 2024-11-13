@@ -1,4 +1,6 @@
 const studentModel = require("../models/studentModel");
+const courseModel = require("../models/courseModel");
+const batchModel = require("../models/batchModel");
 
 
 
@@ -40,7 +42,23 @@ const getStudents = async(req,res)=>{
     try {
 
       const data =   await studentModel.find();
-        res.status(200).send({success:true,data})
+
+      const enrichedData = await Promise.all(
+        data.map(async (student) => {
+          const course = await courseModel.findById(student.courseId);
+          const batch = await batchModel.findById(student.batchId);
+      
+          return {
+            ...student.toObject(), 
+           course: course.course, 
+           batch: batch.batchNo,  
+           courseId:course._id,
+           batchId:batch._id
+          };
+        })
+      );
+
+        res.status(200).send({success:true,data:enrichedData})
        
         
     } catch (error) {

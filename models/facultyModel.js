@@ -19,6 +19,9 @@ const facultySchema = new mongoose.Schema({
     delete:{
         type:Boolean,
         default:false
+    },
+    join_date:{
+        type:Date
     }
 },{
     timestamps:true
