@@ -21,14 +21,15 @@ const taskSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    date_from:{
-        type:Date
-    },
-    date_to:{
-        type:Date
-    },
+   
     file_name:{
        type:String
+    },
+    course_task_id:{
+        type:String
+    },
+    task_completed_date:{
+        type:Date
     }
 }, {
     timestamps: true
