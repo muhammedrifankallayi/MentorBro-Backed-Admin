@@ -111,11 +111,12 @@ const studentNextWeekFind  = async(req,res)=>{
 const saveCourseWiseTask = async(req,res)=>{
     try {
 
-   const data = req.body
+   const _data = JSON.parse(req.body.data);
    const filename = req.file.path ;
 
+
    const body = {
-    ...date,
+    ..._data,
     task_file_path:filename
 }
 
@@ -168,8 +169,7 @@ const getTaskCourseWise = async(req,res)=>{
 const getWeekForCouserWiseTask = async(req,res)=>{
     try {
         
-        const course_id = req.query.id ;
-
+        const course_id = req.params.id ;
         const _data = await TaskCouserWise.find({course_id:course_id});
         const Week = _data.length+1
         res.status(200).json({success:true,data:Week});

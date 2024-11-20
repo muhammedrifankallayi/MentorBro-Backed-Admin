@@ -71,5 +71,17 @@ adminRoute.get("/getTaskPerformanceListByUser",weeklyTaskController.getWeekTaskP
 adminRoute.get("/getNextWeekByStudent",weeklyTaskController.studentNextWeekFind)
 adminRoute.post("/saveTask",multer.single("file"),weeklyTaskController.saveTask)
 
+// couser wise task 
 
-module.exports = adminRoute
+adminRoute.post("/saveCourseTask",multer.single('file'),weeklyTaskController.saveCourseWiseTask) ;
+adminRoute.post("/upadteCourseTask",weeklyTaskController.updateCourseWiseTask) ;
+adminRoute.post("/getCourseWiseTask",weeklyTaskController.getTaskCourseWise) ;
+adminRoute.get("/getNextWeekCourseTask/:id",weeklyTaskController.getWeekForCouserWiseTask)
+
+
+// Token Expire check
+
+adminRoute.post("/checkToken",adminAuthController.checkAdminToken)
+
+
+module.exports = adminRoute;
