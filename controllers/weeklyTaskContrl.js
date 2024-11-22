@@ -2,15 +2,16 @@ const taskModel = require("../models/taskModel");
 const performenceModel = require("../models/performanceModel")
 const userModel = require("../models/studentModel")
 const TaskCouserWise = require("../models/couserTaskModel");
+const mongoose = require("mongoose")
 
 const saveTask = async(req,res)=>{
     try {
-        const file = req.file;
-        const taskData = JSON.parse(req.body.data);
-
-        const data = {...taskData,file_name:file.path}
-
-     const Model = new taskModel(data)
+        let taskData = req.body;
+        console.log(taskData);
+        
+        taskData.studentId = new  mongoose.Types.ObjectId(taskData.studentId);
+        taskData.taskId =new  mongoose.Types.ObjectId(taskData.taskId);
+     const Model = new taskModel(taskData)
      await Model.save().then(async(result)=>{
 
 const perfomData = new performenceModel({
@@ -150,8 +151,21 @@ await TaskCouserWise.findOneAndUpdate({_id:data._id},{$set:_data})
 const getTaskCourseWise = async(req,res)=>{
     try {
     
-      const task_data = await TaskCouserWise.find() ;
-      
+    const task_data  =     await TaskCouserWise.aggregate([
+        {
+            $addFields: {
+              courseObjectId: { $toObjectId: "$course_id" } // Convert string to ObjectId
+            }
+          },
+          {
+            $lookup: {
+              from: "courses",
+              localField: "courseObjectId",
+              foreignField: "_id",
+              as: "Course"
+            }
+          }
+        ])
       if(req.query.course_id){
      const data  =   task_data.filter(x=>x.course_id==req.query.course_id);
      res.status(200).json({success:true,data})

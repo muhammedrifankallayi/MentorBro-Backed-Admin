@@ -10,8 +10,9 @@ const taskSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    taskName: {
-        type: String,
+    taskId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'course_wise_tasks',
         required: true
     },
     remarks: {
@@ -22,15 +23,10 @@ const taskSchema = new mongoose.Schema({
         default: false
     },
    
-    file_name:{
-       type:String
-    },
-    course_task_id:{
-        type:String
-    },
-    task_completed_date:{
-        type:Date
-    }
+  task_repeat:{
+    type:Number,
+    default:0
+  }
 }, {
     timestamps: true
 });

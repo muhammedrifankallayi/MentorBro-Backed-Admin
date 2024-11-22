@@ -75,7 +75,7 @@ adminRoute.post("/saveTask",multer.single("file"),weeklyTaskController.saveTask)
 
 adminRoute.post("/saveCourseTask",multer.single('file'),weeklyTaskController.saveCourseWiseTask) ;
 adminRoute.post("/upadteCourseTask",weeklyTaskController.updateCourseWiseTask) ;
-adminRoute.post("/getCourseWiseTask",weeklyTaskController.getTaskCourseWise) ;
+adminRoute.get("/getCourseWiseTask",weeklyTaskController.getTaskCourseWise) ;
 adminRoute.get("/getNextWeekCourseTask/:id",weeklyTaskController.getWeekForCouserWiseTask)
 
 

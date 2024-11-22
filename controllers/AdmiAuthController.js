@@ -1,14 +1,16 @@
 
 const jwt = require('jsonwebtoken')
-const dotenv =     require("dotenv").config()
+   require("dotenv").config()
   const UserLogin = async(req,res)=>{
     try {
         
     const data = req.body
+
     if(data?.username=="admin"&&data?.password=="123"){
-      const token = jwt.sign(data.username,process.env.SECRET_KEY, {
-        expiresIn: "1h"
-    })
+      const token = jwt.sign({ username: data.username }, process.env.SECRET_KEY, {
+        expiresIn: "1d",
+    });
+    
         res.status(200).send({success:true,data:token});
         return
     }
@@ -22,35 +24,35 @@ const dotenv =     require("dotenv").config()
 
   const checkAdminToken = async(req,res)=>{
     try {
-
-
-
-      const token  = req.body.token ;
-   const verified = jwt.verify(token, SECRET_KEY);
-
-   if(!verified){
-    res.status(401).send({success:false,message:"Authentication Failed"})
-   }
-
-
-            const decoded = jwt.decode(token);
-            
-            
-            if (decoded && decoded.exp) {
-                const currentTime = Math.floor(Date.now() / 1000); 
-               if(decoded.exp < currentTime){
-                res.status(200).json({success:false})
-               }else{
-                return res.status(200).json({success:true});
-               }
-            }else{
-              return res.status(200).json({success:false});
-            }
-           
-      
+      const token = req.body.token;
+  
+      if (!token) {
+        return res.status(401).send({ success: false, message: "Token is required" });
+      }
+  
+      let verified;
+      try {
+        verified = jwt.verify(token, process.env.SECRET_KEY); 
+      } catch (error) {
+        return res.status(401).send({ success: false, message: "Authentication Failed" }); 
+      }
+  
+      // Decode the token to check expiration
+      const decoded = jwt.decode(token);
+      if (decoded && decoded.exp) {
+        const currentTime = Math.floor(Date.now() / 1000); 
+  
+        if (decoded.exp < currentTime) {
+          return res.status(200).json({ success: false, message: "Token expired" });
+        } else {
+          return res.status(200).json({ success: true, message: "Token is valid" });
+        }
+      } else {
+        return res.status(400).json({ success: false, message: "Invalid token structure" });
+      }
     } catch (error) {
-      console.log(error);
-      
+      console.error(error);
+      return res.status(500).json({ success: false, message: "Internal server error" });
     }
   }
 
